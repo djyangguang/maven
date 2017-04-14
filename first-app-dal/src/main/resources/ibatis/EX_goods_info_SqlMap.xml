@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="tb_goods_info">
+<!--因为标准的ibatisji解决不 了 AMOUNT =AMOUNT - #amount# 何 -->
+  <update id="modifyAmount" > <!--tb_grade_info.BaseResultMap 可以复用 用的是   tb_grade_info 中的-->
+ 	update TB_GOODS_INFO set AMOUNT = AMOUNT - #amount#
+ 	where GOOD_CODE = #code# and AMOUNT- #amount# >= 0;
+  </update>
+</sqlMap>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+<!--  <classPatchEntry location="C:/mysql-connector-java-5.1.14.jar"/> -->
+  <context id="context1" targetRuntime="Ibatis2Java5"><!--到底是生成Ibatis还是mbatis  如果targetRuntime是MyBatis3就生产 mybatis文件 -->
+  	<plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin><!-- pojo类中生产toString文件 -->
+  	<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"></plugin>
+    <jdbcConnection connectionURL="jdbc:mysql://127.0.0.1:3306/test_db?useUnicode=true&amp;characterEncoding=utf8" driverClass="com.mysql.jdbc.Driver" password="yang123" userId="root" />
+    <javaModelGenerator targetPackage="com.yangg.spring.model" targetProject="src/main/java" /> <!-- 生成在那里pojo文件 -->
+    <sqlMapGenerator targetPackage="ibatis/Mybatis" targetProject="src/main/resources" /><!-- 生成sql文件 -->
+    <javaClientGenerator targetPackage="com.yangg.spring.dao" targetProject="src/main/java" type="SPRING" /> <!-- 如果是ibatis就是SPRING 否则就是XMLMAPPER -->
+    <table schema="TEST_DB" tableName="TB_MENU_INFO" domainObjectName="MenuInfo"></table><!-- domainObjectName="FradeInfo" -->
+     <table schema="TEST_DB" tableName="TB_ORDER_INFO" domainObjectName="OrderInfo"><!-- domainObjectName="FradeInfo" -->
+    </table>
+    <table schema="TEST_DB" tableName="TB_ORDER_APPLY" domainObjectName="ApplyInfo"> </table>
+    <table schema="TEST_DB" tableName="TB_GOODS_INFO" domainObjectName="GoodInfo"> </table>
+  </context>
+</generatorConfiguration>

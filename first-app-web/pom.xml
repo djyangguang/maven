@@ -1,0 +1,29 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.yangg.subject</groupId>
+    <artifactId>first-app-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>first-app-web</artifactId>
+  <packaging>war</packaging>
+  <dependencies>
+  <dependency>
+  	<groupId>com.yangg.subject</groupId>
+  	<artifactId>first-app-api</artifactId>
+  
+  </dependency>
+  	<dependency>
+  	<groupId>com.yangg.subject</groupId>
+  	<artifactId>first-app-core</artifactId>
+  	
+  </dependency>
+  	<dependency>
+  	<groupId>com.yangg.subject</groupId>
+  	<artifactId>first-app-dal</artifactId>
+ 
+  </dependency>
+  
+  
+  </dependencies>
+</project>

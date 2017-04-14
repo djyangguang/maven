@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+           ">
+
+<!--  <import resource="spring-provider.xml"/>-->
+	<!-- 引入mongodb的相关配置 -->
+    <import resource="classpath:spring-mongodb.xml"/>
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/test_db" />
+		<property name="username" value="root" />
+		<property name="password" value="yang123" />
+	</bean>
+	
+	
+	
+	
+	
+	<bean id="mySqlExecutor" class="com.yangg.spring.page.MySqlExecutor">
+	</bean>
+	
+	<!-- ******（重点）这个配置的意思是个模板 只有他没哟class 下面的都只要继承 parent="parentDao"就好了 -->
+	<bean id="parentDao" abstract="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property> 
+		<!-- 没有class-->
+	</bean>  
+	
+	<!--   用到了自动加载<context:componect-scan> 所以不用自动配置了  但是 dao下面的所有impl要佳#Repository-->
+	<bean id="TbGradeInfoDAO" class="com.yangg.spring.dao.TbGradeInfoDAOImpl"
+		parent="parentDao">		
+	</bean>
+	
+		<bean id="exGradeInfoDao" class="com.yangg.spring.dao.ExGradeInfoDaoImpl"
+		parent="parentDao">
+			<property name="sqlExecutor" ref="mySqlExecutor"></property>
+	</bean>
+	<bean id="ExtGoodsInfoDAOI" class="com.yangg.spring.dao.ExtGoodsInfoDAOImpl" parent="parentDao">
+			
+	</bean>
+	<bean id="GoodsInfoDAO" class="com.yangg.spring.dao.GoodInfoDAOImpl" parent="parentDao">
+			
+	</bean>
+	
+	
+	
+	<bean id="mencatchedService" class="com.yangg.spring.dao.MencatchedService">			
+	</bean>
+	<bean id="cacheTemplateService" class="com.yangg.spring.dao.CacheTemplateService">
+	</bean>
+	<bean id="miaoshaService" class="com.yangg.spring.dao.MiaoshaService">
+	</bean>
+	<bean id="miaoshaCacheService" class="com.yangg.spring.dao.MiaoshaCacheService"></bean>
+	
+	<bean id="MenuInfoService" class ="com.yangg.spring.dao.MenuInfoService"></bean>
+	<bean id ="MenuInfoDAOImpl" class ="com.yangg.spring.dao.MenuInfoDAOImpl" parent="parentDao">
+	</bean>
+	<!--  
+	<bean id="userInfoDao" class="com.yangg.spring.dao.UserServiceImpl">
+	</bean>-->
+			<bean id="memcachedPool" class="com.whalin.MemCached.SockIOPool" factory-method="getInstance" 
+		init-method="initialize" destroy-method="shutDown"> 
+		<constructor-arg><value>commonMemcachedPool</value></constructor-arg> 
+		<property name="servers"> 
+		<list> 
+		<value>localhost:30000</value> 
+		</list> 
+		</property> 
+		<property name="initConn"><value>20</value></property> 
+		<property name="minConn"><value>10</value></property> 
+		<property name="maxConn"><value>50</value></property> 
+		<property name="maintSleep"><value>30</value></property> 
+		<property name="nagle"><value>false</value></property> 
+		<property name="socketTO"><value>3000</value></property> 
+		</bean> 
+
+<bean id="memcachedClient" class="com.whalin.MemCached.MemCachedClient"> 
+<constructor-arg><value>commonMemcachedPool</value></constructor-arg> 
+</bean>
+	
+	<!--    用到了自动加载<context:componect-scan> 所以不用自动配置了  但是 dao下面的所有impl要佳#Repository  没成功
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="com.yangg.spring.dao"></context:component-scan>
+	-->
+ <!-- ***************************************8 -->
+	<bean name="sqlMapClient"
+		class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation">
+			<value>classpath:ibatis/sql-map-config.xml</value>
+
+		</property>
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+
+
+	</bean>
+<tx:annotation-driven />
+    <!-- jdbc事务管理器 -->  
+    <bean id="transactionManager"  
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+        <property name="dataSource">  
+            <ref local="dataSource" />  
+        </property>  
+    </bean>  
+     <!--事务模板 -->  
+    <bean id="transactionTemplate"  
+        class="org.springframework.transaction.support.TransactionTemplate">  
+        <property name="transactionManager">  
+            <ref local="transactionManager" />  
+        </property>  
+        <!--ISOLATION_DEFAULT 表示由使用的数据库决定  
+        <property name="isolationLevelName" value="ISOLATION_DEFAULT"/>  
+        <property name="propagationBehaviorName" value="PROPAGATION_REQUIRED"/>  -->  
+        <!-- <property name="timeout" value="30"/> -->  
+    </bean>  
+	
+
+</beans>

@@ -1,0 +1,231 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.yangg.subject</groupId>
+    <artifactId>first-app-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+ 
+  <artifactId>first-app-dal</artifactId>
+   <dependencies>
+  <dependency>
+  	<groupId>org.springframework</groupId>
+  	<artifactId>spring-aop</artifactId>
+  </dependency>
+  
+ <dependency>
+ 	<groupId>org.springframework</groupId>
+ 	<artifactId>spring-beans</artifactId>
+ </dependency>
+ 
+ <dependency>
+ 	<groupId>org.springframework</groupId>
+  <artifactId>spring-context</artifactId>
+ </dependency>
+ <dependency>
+    <groupId>io.netty</groupId>
+    <artifactId>netty-all</artifactId>
+    <version>4.1.6.Final</version>
+</dependency> 
+<!-- <dependency>
+    <groupId>io.netty</groupId>
+    <artifactId>netty-example</artifactId>
+    <version>5.0.0.Alpha2</version>
+</dependency> -->
+ <dependency>
+ 	<groupId>org.springframework</groupId>
+  <artifactId>spring-context-support</artifactId>
+ </dependency>
+ 
+  <!-- <dependency>
+  	<groupId>org.springframework</groupId>
+  	<artifactId>spring-core</artifactId>
+  	
+  </dependency> -->
+  <dependency>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-core</artifactId>
+ 	 
+	</dependency>
+  
+  <dependency>
+  	 <groupId>org.springframework</groupId>
+  	<artifactId>spring-jdbc</artifactId>
+  </dependency>
+  <dependency>
+ <groupId>org.springframework</groupId>
+  <artifactId>spring-orm</artifactId>
+  </dependency>
+  <dependency>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-test</artifactId>
+  </dependency>
+  <dependency>
+  <groupId>junit</groupId>
+  <artifactId>junit</artifactId>
+  </dependency>
+  
+  
+ 
+  
+
+  
+ 
+  
+  <dependency>
+  	<groupId>mysql</groupId>
+  	<artifactId>mysql-connector-java</artifactId>
+  </dependency>
+  
+   	<!-- ibatis -->
+   	<dependency>
+   	<groupId>org.apache.ibatis</groupId>
+   	<artifactId>ibatis-sqlmap</artifactId>
+   	</dependency>
+   	<!-- commons -->
+   	<dependency>
+   		<groupId>commons-dbcp</groupId>
+	   	<artifactId>commons-dbcp</artifactId>
+   	</dependency>
+  	<!-- spring 要用就的有cglib -->	
+  	<dependency>
+  		<groupId>cglib</groupId>
+  		<artifactId>cglib</artifactId>
+  	</dependency>
+  	<!-- fastjson -->
+  	<dependency>
+  		<groupId>com.alibaba</groupId>
+  		<artifactId>fastjson</artifactId>
+  	</dependency>
+  	<!-- junit -->
+  	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  	</dependency>
+  	<dependency>
+ <groupId>org.springframework</groupId>
+  	<artifactId>spring-core</artifactId>
+  	</dependency>
+  	 <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+           
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+           
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+          
+        </dependency>
+   <!-- **************************** Dubbo 依赖 **************************** -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>2.5.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.3.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sun.jmx</groupId>
+                    <artifactId>jmxri</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sun.jdmk</groupId>
+                    <artifactId>jmxtools</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.jms</groupId>
+                    <artifactId>jms</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.github.sgroschupf</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.1</version>
+        </dependency>
+        <!-- **************************** /Dubbo 依赖 **************************** -->
+
+        <!-- **************************** interface 依赖 **************************** -->
+      			<dependency>
+      			<groupId>com.yangg.subject</groupId>
+    			<artifactId>first-app-api</artifactId>
+    			<version>0.0.1-SNAPSHOT</version>
+      			</dependency>
+      			<dependency>
+      			<groupId>com.github.cyfonly</groupId>
+  				<artifactId>flogger</artifactId>
+  					<version>1.0.1</version>
+      			</dependency>
+        <!-- **************************** /interface 依赖 **************************** -->
+        <!--  redis -->
+        <dependency>
+  	<groupId>redis.clients</groupId>
+  	<artifactId>jedis</artifactId>
+  	<version>2.7.3</version>
+	</dependency>
+	<dependency>
+ 	 <groupId>commons-pool</groupId>
+  	<artifactId>commons-pool</artifactId>
+  	<version>1.6</version>
+		</dependency>
+          <!--  redis -->
+          <!-- 新加入的spring整合mongodb的包 开始 -->
+       <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>2.13.0-rc0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+            <version>1.5.1.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb-cross-store</artifactId>
+            <version>1.7.1.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb-log4j</artifactId>
+            <version>1.7.1.RELEASE</version>
+        </dependency> 
+        <!-- <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>3.2.5.RELEASE</version>
+        </dependency> --> 
+      <!-- spring-security-core-2.0.5.jar -->
+        <dependency>
+  	<groupId>commons-beanutils</groupId>
+  	<artifactId>commons-beanutils</artifactId>
+  	<version>1.8.2</version>
+	</dependency>
+        <!-- 新加入的spring整合mongodb的包 结束 -->
+  	<dependency>
+    <groupId>com.whalin</groupId>
+    <artifactId>Memcached-Java-Client</artifactId>
+    <version>3.0.2</version>
+</dependency>
+<dependency>
+  <groupId>commons-lang</groupId>
+  <artifactId>commons-lang</artifactId>
+  <version>2.6</version>
+</dependency>
+  </dependencies>
+</project>

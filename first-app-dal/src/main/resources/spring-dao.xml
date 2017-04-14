@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+           ">
+	<!-- ******（重点）这个配置的意思是个模板 只有他没哟class 下面的都只要继承 parent="parentDao"就好了 -->
+	<bean id="parentDao" abstract="true">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+		<!-- 没有class -->
+	</bean>
+	<bean id="TbGradeInfoDAO" class="com.yangg.spring.dao.TbGradeInfoDAOImpl"
+		parent="parentDao">
+	</bean>
+	
+
+	<bean id="exGradeInfoDao" class="com.yangg.spring.dao.ExGradeInfoDaoImpl"
+		parent="parentDao">
+	</bean>
+	<bean id="ExtGoodsInfoDAOImpl" class="com.yangg.spring.dao.ExtGoodsInfoDAOImpl"
+		parent="parentDao">
+	</bean>
+	
+	<bean id="userInfoDao" class="com.yangg.dao.UserServiceImpl"
+		parent="parentDao">
+	</bean>
+	<bean id="bankinfo" class="com.yangg.dao.BankServiceExpose"
+		parent="parentDao">
+	</bean>
+
+
+	<bean name="sqlMapClient"
+		class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation">
+			<value>classpath:ibatis/sql-map-config.xml</value>
+
+		</property>
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+
+
+	</bean>
+
+
+
+
+</beans>

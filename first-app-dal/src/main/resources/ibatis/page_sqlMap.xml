@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- 这里是配置 分页的核心 拼装分页的SQL两边的-->
+
+<sqlMap namespace="page">
+	<sql id="pageBegin">
+	
+	SELECT * FROM (
+	</sql>
+ 	<!--page.startIndex,page.pageSize 是page.java中的参数  -->
+	<sql id="pageEnd">
+	)_TEMP LIMIT #page.startIndex# , #page.pageSize#;
+	</sql>
+
+</sqlMap>
