@@ -1,4 +1,4 @@
-package org.rui.thread.newc;
+package com.laoyang.MyThread;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  直到所有的任务都完成（像join()）.他使得所有的并行任务都将在删栏处列队，因此可以一致的向前移动；
  这像 CountDownLatch,只是CountDownLatch是只触发一次的事件，尔CyclicBarrier可多次重用
  
- * @author lenovo
+ * @author yg
  * 
  */
 class Horse implements Runnable {
@@ -140,8 +140,8 @@ public class HorseRace {
 	}
 
 }
-/**
- ===========================================================================
+
+ /*===========================================================================
 **0
 **1
 *2
@@ -253,3 +253,4 @@ public class HorseRace {
 *************4
 ...
 ...
+*/
