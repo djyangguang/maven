@@ -1,0 +1,5 @@
+package com.yangg.designPattern.Visitor;
+//访问者接口
+public interface Visitor {
+	public void visit(Subject sub);
+}
