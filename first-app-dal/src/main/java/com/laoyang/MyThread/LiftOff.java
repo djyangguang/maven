@@ -21,7 +21,7 @@ public class LiftOff implements Runnable {
 	public String status(){
 		return "#"+id+"("
 				+ (countDown>0?countDown:"liftoff!")+"),";
-	}
+	}qq
 	@Override
 	public void run() {
 		while(countDown-->0)

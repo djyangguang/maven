@@ -54,7 +54,7 @@ class Receiver implements Runnable {
 		in = new PipedReader(sender.getPipedWriter());
 	}
 
-	@Override
+	@Overrideqq
 	public void run() {
 		try {
 			while (true) {
